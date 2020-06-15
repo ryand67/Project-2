@@ -6,16 +6,11 @@ module.exports = function(sequelize, dataTypes) {
         likes: {
             type: dataTypes.INTEGER,
             defaultValue: 0
+        },
+        authorId: {
+            type: dataTypes.INTEGER
         }
     })
-
-    Post.associate = function(models){
-        Post.belongsTo(models.User, {
-            foreignKey: {
-                allowNull: false
-            }
-        })
-    }
 
     return Post;
 }

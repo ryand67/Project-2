@@ -35,11 +35,5 @@ module.exports = function(sequelize, dataTypes) {
         user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
     })
 
-    User.associate = function(models) {
-        User.hasMany(models.Post, {
-            onDelete: "cascade"
-        })
-    }
-
     return User;
 }

@@ -3,11 +3,13 @@ const db = require('../models');
 module.exports = function(app){
     app.post('/api/post', (req, res) => {
         db.Post.create({
-            body: req.body.body
+            body: req.body.body,
+            authorId: req.body.authorId
         }).then((result) => {
             res.json(result);
         })
     })
+
     //Grab all of the posts
     app.get('/api/post', (req, res) => {
         db.Post.findAll({
