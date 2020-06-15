@@ -4,7 +4,8 @@ module.exports = function(sequelize, dataTypes) {
             type: dataTypes.STRING
         },
         likes: {
-            type: dataTypes.INTEGER
+            type: dataTypes.INTEGER,
+            defaultValue: 0
         }
     })
 

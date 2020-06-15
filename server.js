@@ -1,5 +1,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const passport = require('./config/passport');
+const session = require('express-session')
 
 const app = express();
 
@@ -18,6 +20,10 @@ app.use(express.static('public'));
 require('./controllers/api-user-routes')(app);
 require('./controllers/hb-routes')(app);
 require('./controllers/api-post-routes')(app);
+
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 db.sequelize.sync({force: true}).then(() => {
     app.listen(PORT, () => {
