@@ -24,6 +24,10 @@ module.exports = function(sequelize, dataTypes) {
             validate: {
                 len: [1, 200]
             }
+        },
+        profilePic: {
+            type: dataTypes.STRING,
+            defaultValue: "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg"
         }
     })
 

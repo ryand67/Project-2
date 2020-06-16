@@ -10,13 +10,24 @@ module.exports = function(app){
         })
     })
 
+    //Grab all posts from certain author
+    app.get('/api/post/:authorId', (req, res) => {
+        db.Post.findAll({
+            where: {
+                authorId: req.params.authorId
+            }
+        }).then((result) => {
+            res.json(result);
+        })
+    })
+
     //Grab all of the posts
     app.get('/api/post', (req, res) => {
         db.Post.findAll({
-            order: ['createdAt', 'DESC']
+            // order: ['createdAt', 'DESC']
         }).then((result) => {
             res.json(result);
-            res.render('home', {post: result});
+            // res.render('home', {post: result});
         })
     })
 
